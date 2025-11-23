@@ -7,3 +7,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+// Trigger animations on scroll
+const elements = document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right, .zoom-in");
+
+function showElements() {
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            el.style.animationPlayState = "running";
+        }
+    });
+}
+
+window.addEventListener("scroll", showElements);
+showElements();
